@@ -1,8 +1,16 @@
 <form name="addnew" action="saveassignment.html" >
 <input name="field" value="course" type="hidden" />
+<input name="course.value" type="hidden" value='$context.getRequestParameter("course")' /> 
+<input name="field" value="duedate" type="hidden" /> 
+<input name="duedate.value" type="hidden" type="hidden"  value='$context.getRequestParameter("duedate")' />
 <input name="field" value="name" type="hidden" />
 <input name="field" value="workduration" type="hidden" />
+<input name="save" value="true" type="hidden" />
+<input name="searchtype" value="assignment" type="hidden" />
+<input name="librarycol" value='$context.getRequestParameter("course")' type="hidden" />
 
-<div class="assignment"><input name="name.value" /> <input name="workduration.value" style="size:3px"/>
+<div class="assignment">
+<textarea name="name.value" style="width:100%; height:120px;"></textarea> Hours: <input name="workduration.value" style="width:30px"/>
+<input value="save" type="submit"/>
 </div>
 </form>

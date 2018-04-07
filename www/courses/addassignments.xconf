@@ -1,11 +1,9 @@
 <page>
-	
-	<path-action name="DataEditModule.saveData"/>
-	<path-action name="DataEditModule.loadData" >
+  <path-action name="DataEditModule.loadData" >
 			<pageval>librarycol</pageval>
 			<idname>librarycol</idname>
 			<searchtype>librarycollection</searchtype>
     </path-action>
    <page-action bean="dateStorageUtil" name="PageValue.loadPageVariable"  class="org.openedit.util.DateStorageUtil" />
-	
+    
 </page>
