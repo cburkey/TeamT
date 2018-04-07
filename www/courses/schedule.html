@@ -1,0 +1,53 @@
+<div style="background:#cec5b3; padding:1px; color:#3e4553;text-align:center; border-top:solid 10px #3e4553;">
+<div style="float:right;padding:4px;">
+$mediaarchive.getData("professor",$librarycol.professor)
+</div>
+    <h1>$librarycol</h1>
+</div>
+<div style="float:right;padding:4px;">
+<form name="change" action="schedule.html">
+<input type="hidden" name="librarycol" value="$librarycol.id" />
+#set( $weeks = $dateStorageUtil.getWeeks(10) )
+#set( $thismonday = $dateStorageUtil.getThisMonday() )
+#set( $selectedweek = $context.getRequestParameter("selectedweek"))
+#if( $selectedweek )
+	#set( $selectedweek = $dateStorageUtil.getThisMonday($selectedweek) )
+#else
+	#set( $selectedweek = $thismonday )
+#end
+
+<select style="width:100px" name="selectedweek" onchange="submit()" name="weeks">
+
+#foreach($week in $weeks)
+#set($time =$dateStorageUtil.formatForStorage($week))
+<option value="$time" #if($week.equals($selectedweek)) selected #end>$context.getDate($week)</option>$week.time $selectedweek.time 
+#end
+</select>
+</form>
+</div>
+
+<table class="schedule" data-addaction="$apphome/courses/addassignments.html">
+#set( $days = ["Mon", "Tue", "Wed", "Thus", "Fri", "Sat", "Sun"] )
+#foreach($day in $days)
+#set( $count = ${foreach.count} )
+#set( $count = $count - 1)
+#set( $today = $dateStorageUtil.addDaysToDate($selectedweek,$count))
+<tr>
+<td style="width:40px">$day</td>
+<td class="rowdata" data-duedate="$today">
+<div style="float:right">
+<a href="#" class="addnewassignment">
+<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+</a>
+</div>
+<div style="margin-right:18px" class="assignments">
+#set( $assignments = $mediaarchive.getSearcher("assignment").query().on("duedate",$today).sort("duedate").search() )
+#foreach( $assignment in $assignments)
+	<div class="assignment"><span>$assignment.name</span> <span>$!assignment.workduration</span></div>
+#end
+</div>
+</td>
+</tr>
+#end
+
+</table>

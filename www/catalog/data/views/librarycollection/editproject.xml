@@ -2,10 +2,5 @@
 
 <properties> 
   <property id="name"/>  
-  <property id="projectdescription"/>  
-  <property id="street"/>  
-  <property id="city"/>  
-  <property id="country"/>  
-  <property id="assetportrait"/>  
-  <property id="assetbanner"/>  
+  <property id="professor"/>  
 </properties>

@@ -104,3 +104,38 @@ h1 {
   box-shadow: none;
   outline: 0;
 }
+.schedule {
+	width: 100%;
+	border-top: solid 1px #666;
+	border-right: solid 1px #666;
+}
+.schedule .assignment
+{
+	background-color:#70c18d;
+	border: solid 1px #666;
+	color: white;
+	padding: 5px;
+}
+
+.schedule .assignment input
+{
+	color: black;
+}
+
+
+.schedule td
+{
+	border-left: 1px solid black;
+	border-bottom: 1px solid black;
+	padding:5px;
+}
+
+
+
+
+
+
+
+
+
+

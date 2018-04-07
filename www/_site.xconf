@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <page>
-  
-  <property name="catalogid">site/catalog</property>
-  <property name="applicationid">site/app</property>
+  <inner-layout>/${applicationid}/applayout.html</inner-layout>
+  <property name="catalogid">teamt/catalog</property>
+  <property name="applicationid">teamt</property>
   <property name="title">OpenInstitute</property>
   <path-action name="Admin.autoLogin"/>
+  <property name="fallbackdirectory">/WEB-INF/base/emfrontend</property>
+  
+  <path-action alltypes="true" name="MediaArchiveModule.getMediaArchive"/>
   <path-action name="MediaArchiveModule.loadApplicationId"/>
   <path-action name="ProfileModule.loadUserProfile"/>
   <path-action name="PageValue.loadPageVariable" allowduplicates="true" bean="searcherManager"/>
@@ -14,5 +17,4 @@
   <path-action name="Admin.loadPermissions"/>
   <path-action name="Admin.allowViewing"/>
   <path-action name="TranslationModule.loadBrowserLanguage"/>
-  <path-action alltypes="true" name="MediaArchiveModule.getMediaArchive"/>
 </page>

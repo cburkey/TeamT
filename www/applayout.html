@@ -1,0 +1,28 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta http-equiv="Content-Security-Policy" content="default-src * data: gap: content: https://ssl.gstatic.com; style-src * 'unsafe-inline'; script-src * 'unsafe-inline' 'unsafe-eval'">
+    <link rel="stylesheet" href="$apphome/css/style.css">
+
+    <script src="$apphome/components/monaca-jquery/jquery.js"></script>
+    <link rel="stylesheet" href="$apphome/theme/css/style.css">
+    <link rel="stylesheet" href="$apphome/components/javascript/bootstrap/css/bootstrap.css">
+    <script type="text/javascript" src="$apphome/components/javascript/bootstrap/js/bootstrap.js">  </script>
+    <script src="$apphome/components/bootstrap/js/bootstrap.bundle.js"></script>
+	<script type="text/javascript" src="$apphome/components/javascript/liveajax/liveajax.js">  </script>
+    <script src="$apphome/components/teamt.js"></script>
+
+    <script>
+        // PhoneGap event handler
+        document.addEventListener("deviceready", onDeviceReady, false);
+        function onDeviceReady() {
+            console.log("PhoneGap is ready");
+        }
+    </script>
+</head>
+<body>
+$pages.includeContent()
+</body>
+</html>

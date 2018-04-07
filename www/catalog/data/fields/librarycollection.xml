@@ -11,9 +11,16 @@
   </property>  
   <property id="name" index="true" stored="true" editable="true"  > 
     <name> 
-      <language id="en"><![CDATA[Project Name]]></language>  
+      <language id="en"><![CDATA[Course Name]]></language>  
     </name> 
   </property>  
+  
+  <property id="professor" index="true" stored="true" editable="true"> 
+    <name> 
+      <language id="en"><![CDATA[Professor]]></language>  
+    </name> 
+  </property>  
+  
   <property id="creationdate" index="true" stored="true" editable="true"  type="date" datatype="date" >
     <name> 
       <language id="de"><![CDATA[Erstellungsdatum]]></language>  
