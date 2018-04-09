@@ -14,13 +14,7 @@
       <language id="en"><![CDATA[Course Name]]></language>  
     </name> 
   </property>  
-  
-  <property id="professor" index="true" stored="true" editable="true"> 
-    <name> 
-      <language id="en"><![CDATA[Professor]]></language>  
-    </name> 
-  </property>  
-  
+    
   <property id="creationdate" index="true" stored="true" editable="true"  type="date" datatype="date" >
     <name> 
       <language id="de"><![CDATA[Erstellungsdatum]]></language>  
@@ -199,6 +193,11 @@
     </name> 
   </property>  
 
+  <property id="professor" index="true" internalfield="false" editable="true" isbadge="false" required="false" filter="false" multilanguage="false" datatype="list" stored="true" autocreatefromexif="false" keyword="false" writenametoexif="false">New
+    <name>
+      <language id="en"><![CDATA[Professor]]></language>
+    </name>
+  </property>
     <property id="geo_point_formatedaddress" index="true" editable="true" stored="true">New
     <name>
       <language id="en"><![CDATA[geo_point_formatedaddress]]></language>
