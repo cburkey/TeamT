@@ -1,0 +1,41 @@
+#set( $selectedgrade = $context.getRequestParameter("selectedgrade") )
+
+#ifnull($selectedgrade)
+
+#set( $selectedgrade = $userprofile.selectedgrade )
+#ifnull($selectedgrade)
+#set( $selectedgrade = "11")
+#end
+#end
+
+
+#set( $searcher = $mediaarchive.getSearcher("groupchat") )
+#set( $xmledithome  = "$apphome/components/xml")
+$context.putPageValue("searcher",$searcher)
+<form action="addsave.html" method="post">
+Add comment:
+<input type="hidden" name="save" value="true" />
+<input type="hidden" name="searchtype" value="groupchat" />
+
+<input type="hidden" name="field" value="owner" />
+<input type="hidden" name="owner.value" value="$user.getId()" />
+
+<input type="hidden" name="field" value="gradelevel" />
+<input type="hidden" name="gradelevel.value" value="$selectedgrade" />
+
+<input type="hidden" name="field" value="date" />
+<input type="hidden" name="date.value" value="$dateStorageUtil.getTodayForStorage()" />
+
+#set( $parentid = $context.getRequestParameter("parentid") )
+#if( $parentid )
+<input type="hidden" name="field" value="parentid" />
+<input type="hidden" name="parentid.value" value="$parentid" />
+#end
+
+
+<div class="form-group">
+  <input type="hidden" value="chatcomment" name="field">
+  <textarea name="chatcomment.value" id="chatcomment" style="width:100%;border:1px solid black;" rows="4"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

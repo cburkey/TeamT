@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<properties beanname="dataSearcher"> 
+  <property id="id" index="true" stored="true" editable="true" internalfield="true"  >
+    <name> 
+      <language id="de"><![CDATA[Ich würde]]></language>  
+      <language id="en"><![CDATA[Id]]></language>  
+      <language id="es"><![CDATA[Carné de identidad]]></language>  
+      <language id="fr"><![CDATA[Id]]></language> 
+    </name> 
+  </property>  
+  <property id="gradelevel" index="true" stored="true" editable="true" datatype="number" >
+    <name> 
+      <language id="en"><![CDATA[Grade Level]]></language>  
+    </name> 
+  </property>  
+  <property id="parentid" index="true" stored="true" editable="true" >
+    <name> 
+      <language id="en"><![CDATA[Parent]]></language>  
+    </name> 
+  </property>  
+  <property id="date" index="true" stored="true" editable="true"  type="date" viewtype="date"  datatype="date" >
+    <name> 
+      <language id="en"><![CDATA[Date]]></language>  
+    </name> 
+  </property>  
+  <property id="owner" index="true" viewtype="user" type="list" listid="user" keyword="true" stored="true"  editable="true" > 
+    <name> 
+      <language id="de"><![CDATA[Owner]]></language>  
+      <language id="en"><![CDATA[Owner]]></language>  
+      <language id="es"><![CDATA[Propietario]]></language>  
+      <language id="fr"><![CDATA[Propriétaire]]></language> 
+    </name> 
+  </property>  
+  <property id="chatcomment" index="true" stored="true" editable="true" viewtype="textarea"   >
+    <name> 
+      <language id="en"><![CDATA[Text]]></language>  
+    </name> 
+  </property>  
+   <property id="uploadphoto" index="true" editable="true" stored="true" internalfield="false" isbadge="false" viewtype="asset" rendertype="asset" required="false" filter="false" multilanguage="false" datatype="list" autocreatefromexif="false" keyword="false" writenametoexif="false">
+    <name> 
+      <language id="en"><![CDATA[Attachment]]></language> 
+    </name> 
+  </property>  
+  
+</properties>

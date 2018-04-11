@@ -17,9 +17,4 @@
       <language id="fr"><![CDATA[Identité]]></language> 
     </name> 
   </property>  
-  <property id="sourcepath">New 
-    <name>
-      <language id="en"><![CDATA[SourcePath]]></language>
-    </name>
-  </property> 
 </properties>

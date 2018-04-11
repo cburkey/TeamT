@@ -14,6 +14,13 @@
       <language id="en"><![CDATA[Course Name]]></language>  
     </name> 
   </property>  
+
+  <property id="gradelevel" index="true" stored="true" editable="true" datatype="number" >
+    <name> 
+      <language id="en"><![CDATA[Grade Level]]></language>  
+    </name> 
+  </property>  
+
     
   <property id="creationdate" index="true" stored="true" editable="true"  type="date" datatype="date" >
     <name> 

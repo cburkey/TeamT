@@ -1,12 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <page>
-  <inner-layout>/${applicationid}/applayout.html</inner-layout>
+  <inner-layout>/${applicationid}/theme/layouts/layout.html</inner-layout>
   <property name="catalogid">teamt/catalog</property>
   <property name="applicationid">teamt</property>
   <property name="title">OpenInstitute</property>
+  <property name="themeprefix">/${applicationid}/theme</property>
   <path-action name="Admin.autoLogin"/>
+  <path-action name="Admin.getTheme"/>
+  
   <property name="fallbackdirectory">/WEB-INF/base/emfrontend</property>
+  
   
   <path-action alltypes="true" name="MediaArchiveModule.getMediaArchive"/>
   <path-action name="MediaArchiveModule.loadApplicationId"/>
@@ -16,5 +20,13 @@
   <path-action name="SessionValue.loadSessionVariable" bean="moduleManager"/>
   <path-action name="Admin.loadPermissions"/>
   <path-action name="Admin.allowViewing"/>
+  <property name="login-path">/${applicationid}/authentication/nopermissions.html</property>
+  
   <path-action name="TranslationModule.loadBrowserLanguage"/>
+  
+	<permission name="view">
+		<user />
+	</permission>
+
+  
 </page>

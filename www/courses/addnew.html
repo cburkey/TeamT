@@ -1,13 +1,18 @@
-<div style="background:#cec5b3; padding:1px; color:#3e4553;text-align:center; border-top:solid 10px #3e4553;">
-    <h1>My Courses</h1>
+<div style="float:left;">
+<a href="$apphome/courses/index.html" style="font-size:30px;padding:4px;">
+<span class="fa fa-arrow-circle-left" aria-hidden="true"></span>
+</a>
+ #set( $selectedgrade = $userprofile.selectedgrade )
+ 
 </div>
+<div class="clearfix"> </div>
 
 ##Exising ones 
 ##No existing programs found.
 
 <div class="card mx-auto" style="margin:40px;max-width:800px;text-align:left;">
   <div class="card-header">
-    Add a new course
+    Add ${selectedgrade}th grade course
   </div>
   <div class="card-block" style="padding:20px;">
 
@@ -21,6 +26,10 @@ $context.putPageValue("searcher",$searcher)
 
 <input type="hidden" name="field" value="owner" />
 <input type="hidden" name="owner.value" value="$user.getId()" />
+#set( $selectedgrade = $context.getRequestParameter("selectedgrade") )
+
+<input type="hidden" name="field" value="gradelevel" />
+<input type="hidden" name="gradelevel.value" value="$selectedgrade" />
 
    <div class="form-group">
 	#set( $detail = $searcher.getDetail("name") )

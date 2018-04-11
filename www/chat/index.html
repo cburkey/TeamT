@@ -1,0 +1,49 @@
+<div style="float:left;">
+<a href="$apphome/index.html" style="font-size:30px;padding:4px;">
+<span class="fa fa-arrow-circle-left" aria-hidden="true"></span>
+</a>
+</div>
+<div style="float:right;">
+
+#set( $selectedgrade = $userprofile.selectedgrade )
+#ifnull($selectedgrade)
+#set( $selectedgrade = "11")
+#end
+<form name="change" action="changegrade.html">
+<h4>Grade:
+#set( $grades = ["8","9","10","11","12"])
+<input type="hidden" name="profilepreference" value="selectedgrade" />
+<select style="width:100px float:right" name="profilepreference.value" onchange="submit()" >
+#foreach($grade in $grades)
+<option value="$grade" #if($grade.equals($selectedgrade)) selected #end>$grade</option> 
+#end
+</select>
+</h4>
+</form>
+</div>
+<div class="clearfix"> </div>
+
+<div class="card mx-auto clearfix" style="margin:0px;max-width:500px;text-align:left;">
+
+<div class="card-header">
+<h3>${selectedgrade}th Grade Chat</h3>
+
+</div>
+<div class="card-body">
+
+$pages.include("./addform.html",$context)
+
+  #set( $searcher = $mediaarchive.getSearcher("groupchat") )
+    <i>Recent comments: </i><br>
+	#set( $hits = $searcher.query().exact("gradelevel",${selectedgrade}).enduser(false).sort("dateDown").search($context) )
+	$hits.setHitsPerPage(50)
+  #foreach( $hit in  $hits.getPageOfHits() )
+       	<div class="chatrow" #if( $hits.parentid ) style="margin-left:20px" #end>    
+       	 	<span class="commentbox">$hit.chatcomment</span>
+       	 	<span class="datebox">$context.getDateTime($!hit.date)</span>  <span class="ownerbox">$hit.owner</span>
+		 </div>
+  #end
+<p>  $hits.size() comments</p>
+  </div>
+</div>
+
