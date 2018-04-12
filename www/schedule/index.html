@@ -9,6 +9,10 @@
 </div>
 <div style="float:right;">
 <form name="change" action="changegrade.html">
+
+#set( $selectedweek = $context.getRequestParameter("selectedweek"))
+<input type="hidden" name="selectedweek" value="$!selectedweek" />
+
 <h4>Grade:
 #set( $grades = ["8","9","10","11","12"])
 <input type="hidden" name="profilepreference" value="selectedgrade" />
@@ -23,11 +27,10 @@
 <div class="clearfix"> </div>
 
 <div style="padding:4px;">
-<form name="change" action="schedule.html">
+<form name="change" action="index.html">
 <input type="hidden" name="librarycol" value="$librarycol.id" />
 #set( $weeks = $dateStorageUtil.getWeeks(10) )
 #set( $thismonday = $dateStorageUtil.getThisMonday() )
-#set( $selectedweek = $context.getRequestParameter("selectedweek"))
 #if( $selectedweek )
 	#set( $selectedweek = $dateStorageUtil.getThisMonday($selectedweek) )
 #else
@@ -45,6 +48,7 @@
 </div>
 
 <table class="schedule" data-addaction="$apphome/courses/addassignments.html">
+#set( $courses = $mediaarchive.getSearcher("librarycollection").query().match("gradelevel",$selectedgrade).search() )
 #set( $days = ["Mon", "Tue", "Wed", "Thus", "Fri", "Sat", "Sun"] )
 #foreach($day in $days)
 #set( $count = ${foreach.count} )
@@ -58,13 +62,18 @@
 <span class="fa fa-plus-circle" aria-hidden="true"></span>
 </a>
 </div>
-<div style="margin-right:18px" class="assignments">
-#set( $courses = $mediaarchive.getSearcher("librarycollection").query().exact("gradelevel",$selectedgrade).search() )
-#set( $assignments = $mediaarchive.getSearcher("assignment").query().exact("course",$courses).on("duedate",$today).sort("duedate").search() )
+#if(  $courses.size() > 0)
+<div style="margin-right:18px" class="assignments"> 
+#set( $assignments = $mediaarchive.getSearcher("assignment").query().orgroup("course",$courses).on("duedate",$today).sort("course").search() )
 #foreach( $assignment in $assignments)
-	<div class="assignment"><span>$assignment.name</span> <span>$!assignment.workduration</span></div>
+   	<div class="chatrow">    
+      	 	<span class="commentbox">$assignment.name</span>
+      	 	<span class="datebox">$!assignment.workduration hours</span>
+      	 	<span class="ownerbox"><a href="$apphome/courses/schedule.html?librarycol=$assignment.course">$!mediaarchive.getData("librarycollection",$assignment.course)</a></span>
+	</div>
 #end
 </div>
+#end
 </td>
 </tr>
 #end

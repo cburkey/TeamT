@@ -32,18 +32,19 @@
 <div class="card-body">
 
 $pages.include("./addform.html",$context)
-
+<br>
   #set( $searcher = $mediaarchive.getSearcher("groupchat") )
-    <i>Recent comments: </i><br>
 	#set( $hits = $searcher.query().exact("gradelevel",${selectedgrade}).enduser(false).sort("dateDown").search($context) )
 	$hits.setHitsPerPage(50)
   #foreach( $hit in  $hits.getPageOfHits() )
        	<div class="chatrow" #if( $hits.parentid ) style="margin-left:20px" #end>    
        	 	<span class="commentbox">$hit.chatcomment</span>
-       	 	<span class="datebox">$context.getDateTime($!hit.date)</span>  <span class="ownerbox">$hit.owner</span>
+       	 	<span class="datebox">$context.getDateTime($!hit.date)</span>  <span class="ownerbox">$userManager.getUser($hit.owner).email</span>
 		 </div>
   #end
-<p>  $hits.size() comments</p>
+##if( $hits.size() > 50)
+<p>  <a href="viewall.html">$hits.size() comments</a></p>
+##end
   </div>
 </div>
 
